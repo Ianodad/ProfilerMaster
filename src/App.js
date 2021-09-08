@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 // Page Component 
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 
@@ -25,6 +26,7 @@ class App extends Component {
           {/* <Router history={history}> */}
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/profile/:id" exact component={Profile} />
             <Route path="/notFound" component={NotFound} />
             <Redirect to="/notFound" />
           </Switch>
