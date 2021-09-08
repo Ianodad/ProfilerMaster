@@ -1,4 +1,0 @@
-export const GET_ALL_USERS= "SIGN_OUT"
-export const SIGN_IN_WITH_GITHUB = "SIGN_IN_WITH_GITHUB"
-
-, GET_USER_BY_ID

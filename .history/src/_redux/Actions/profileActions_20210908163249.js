@@ -1,2 +1,0 @@
-
-const getAllUsers=() => async(){}
