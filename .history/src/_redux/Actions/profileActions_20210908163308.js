@@ -1,0 +1,4 @@
+
+const getAllUsers = () => async(dispatch)=>{
+
+}
