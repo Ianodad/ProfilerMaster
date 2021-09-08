@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-import ProfileReducer from "./Profile"
+import ProfileReducer from "./Users"
 
 export default combineReducers({
 

@@ -1,7 +1,8 @@
-import {GET_ALL_USERS, GET_USER_BY_ID } from "../types";
+import {GET_ALL_USERS, GET_USER } from "../types";
 
 const initialState = {
-  
+  allUsers: [],
+  user: {}
 };
 
 export default (state = initialState, action) => {
@@ -9,12 +10,12 @@ export default (state = initialState, action) => {
     case GET_ALL_USERS:
       return {
         ...state,
-        allOwnerRepos: action.payload,
+        allUsers: action.payload,
       };
-    case GET_USER_BY_ID:
+    case GET_USER:
       return {
         ...state,
-        allOwnerIssues: action.payload,
+        allUsers: action.payload,
       };
     default:
       return state;

@@ -20,6 +20,7 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "simple-import-sort/imports": "error"
+        "simple-import-sort/imports": "error",
+        "react/prop-types": 0
     }
 };
