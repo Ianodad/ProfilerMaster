@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { SpringGrid } from "react-stonecutter";
+import {
+  CSSGrid,
+  measureItems,
+  makeResponsive,
+  layout,
+} from "react-stonecutter";
 
 import usersAction from "../_redux/Actions/usersActions";
 import Card from "../components/Card";
 import Menu from "../components/Menu";
 const { getAllUsers } = usersAction;
-export class Home extends Component {
+
+const Grid = makeResponsive(measureItems(CSSGrid), {
+  maxWidth: 1920,
+  minPadding: 100,
+});
+class Home extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
@@ -19,33 +29,41 @@ export class Home extends Component {
     await this.props.getAllUsers();
     console.log(this.props.users);
   };
+
+  randomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
   render() {
     const { users } = this.props;
     return (
-      <div>
+      <>
         <Menu />
         <div className="container">
-          {/* <div className="row">
+        <div className="row">
                         {users.map(user=>(
                             <Card key={user.id} user={user}/>
                         ))}
-                    </div> */}
-          <SpringGrid
-            component="ul"
-            columns={5}
-            columnWidth={150}
-            gutterWidth={5}
-            gutterHeight={5}
-            itemHeight={200}
-            springConfig={{ stiffness: 170, damping: 26 }}
-          >
-              {users.map(user=>(
-                            <Card key={user.id} user={user}/>
-                        ))}
-
-          </SpringGrid>
+                    </div>
+        <Grid
+          className="gridlist"
+          component="ul"
+          columns={3}
+          columnWidth={150}
+          gutterWidth={5}
+          gutterHeight={5}
+          layout={layout.pinterest}
+          duration={800}
+          easing="ease-out"
+          Style={{listStyleType: "none"}}
+        >
+          {users.map((user, key) => (
+            <li  key={key} itemHeight={this.randomNumber(100, 130)}>
+              <Card key={key} user={user} />
+            </li>
+          ))}
+        </Grid>
         </div>
-      </div>
+      </>
     );
   }
 }
