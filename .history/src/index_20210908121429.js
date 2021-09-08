@@ -1,21 +1,23 @@
 // Redux imports
-// Style imports
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-// Dependencies imports
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-
-// import reducers from './_reducers';
-// Components imports
-import App from './App';
+import reducers from './_reducers';
+import { createStore, applyMiddleware } from 'redux';
 import reportWebVitals from './reportWebVitals';
 
 
-const store = createStore( applyMiddleware(thunk));
+// Dependencies imports
+import React from 'react';
+import thunk from 'redux-thunk';
+import ReactDOM from 'react-dom';
+
+// Components imports
+import App from './App';
+
+// Style imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>

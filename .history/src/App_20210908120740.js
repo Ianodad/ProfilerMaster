@@ -1,10 +1,14 @@
+import {Route, Switch, Redirect } from "react-router-dom";
 import React, { Component} from "react";
-import {Redirect, Route, Switch } from "react-router-dom";
+
 import { BrowserRouter } from "react-router-dom";
+import ProtectedRoute from "../src/components/Auth/ProtectedRoute";
+
+
 
 // Page Component 
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
+
 
 
 
@@ -24,7 +28,9 @@ class App extends Component {
         <BrowserRouter>
           {/* <Router history={history}> */}
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={Main} />
+            {/* <Route path="/" exact component={Main} /> */}
+            <Route path="/auth" exact component={Auth} />
             <Route path="/notFound" component={NotFound} />
             <Redirect to="/notFound" />
           </Switch>

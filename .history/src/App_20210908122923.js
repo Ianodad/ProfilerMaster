@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 // Page Component 
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import NotFound from "./Pages/NotFound";
 
 
 

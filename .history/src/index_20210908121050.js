@@ -1,21 +1,21 @@
 // Redux imports
-// Style imports
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from 'react-redux';
+import reducers from './_reducers';
+import { applyMiddleware, createStore } from 'redux';
 
 // Dependencies imports
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import ReactDOM from 'react-dom';
 
-// import reducers from './_reducers';
 // Components imports
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+// Style imports
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const store = createStore( applyMiddleware(thunk));
+const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -23,6 +23,14 @@ ReactDOM.render(
    </Provider>,
   document.getElementById('root')
 );
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

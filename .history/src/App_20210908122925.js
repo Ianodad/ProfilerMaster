@@ -3,8 +3,8 @@ import {Redirect, Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 
 // Page Component 
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import Home from "./Pages/Home";
+import NotFound from "./Pages/NotFound";
 
 
 
