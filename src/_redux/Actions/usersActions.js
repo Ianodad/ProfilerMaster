@@ -36,6 +36,7 @@ const getUserFromLocalState = (id) => async (dispatch, getState) => {
 };
 
 const patchUserDetail = (id, userObj) => async (dispatch) => {
+    console.log(userObj);
   const { data } = await usersApi.patchUserDetail(id, userObj);
   console.log(data);
   try {

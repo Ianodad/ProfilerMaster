@@ -14,7 +14,7 @@ import LoadingAnimation from '../lottie/loading.json';
 const { getUserFromLocalState, patchUserDetail } = usersAction;
 
 // eslint-disable-next-line no-shadow
-function Edit({ getUserFromLocalState, userLocal, match }) {
+function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match }) {
   useEffect(() => {
     getUserFromLocalState(match.params.id);
     console.log(match.params.id);
@@ -28,12 +28,6 @@ function Edit({ getUserFromLocalState, userLocal, match }) {
   });
 
   const handleEdit = ({ name, occupation, email, bio }) => {
-    console.log({
-      name,
-      occupation,
-      email,
-      bio,
-    });
     patchUserDetail(match.params.id, {
       name,
       occupation,

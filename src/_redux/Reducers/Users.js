@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
     case PATCH_USER:
       return {
         ...state,
-        user: action.payload,
+        allUsers: {...state.allUsers, ...action.payload},
       };
     default:
       return state;

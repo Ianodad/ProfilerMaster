@@ -23,9 +23,11 @@ class Home extends Component {
   /* eslint-disable-next-line */
     async componentDidMount() {
       // eslint-disable-next-line no-shadow
-      const { getAllUsers, users } = this.props;
-    await getAllUsers();
+    const { getAllUsers, users } = this.props;
     console.log(users);
+    if (users===[]){
+      await getAllUsers();
+    }
   }
 
   randomNumber = (min, max) => {
@@ -39,7 +41,7 @@ class Home extends Component {
         <MainLayout>
           {users ? (
             <div className="row flex-wrap">
-              {users.map((user) => (
+              {users && users?.map((user) => (
                 <Card key={user.id} user={user} />
               ))}
             </div>
