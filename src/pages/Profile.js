@@ -24,11 +24,11 @@ class Profile extends Component {
   /*eslint-disable */
 
     render() {
-        const {user}=this.props
+        const {user, navigation}=this.props
         return (
             <>
             <MainLayout>
-                { user ? (<ProfileCard user={user}/>):(<Lottie animationData={LoadingAnimation} />)}
+                { user ? (<ProfileCard user={user} navigation={navigation}/>):(<Lottie animationData={LoadingAnimation} />)}
                 
             </MainLayout>
             </>

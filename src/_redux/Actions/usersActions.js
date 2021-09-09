@@ -35,15 +35,14 @@ const getUserFromLocalState = (id) => async (dispatch, getState) => {
   }
 };
 
-const patchUserDetail = (id, userObj) => async (dispatch) => {
-    console.log(userObj);
+const patchUserDetail = (id, userObj, history) => async (dispatch) => {
   const { data } = await usersApi.patchUserDetail(id, userObj);
-  console.log(data);
   try {
     dispatch({
       type: PATCH_USER,
       payload: data,
     });
+    history.push({pathname:'/', state: {added:'user'}});
   } catch (error) {
     console.log(error);
   }

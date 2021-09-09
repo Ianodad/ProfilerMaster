@@ -3,9 +3,11 @@
 import './ProfileCard.css';
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 const ProfileCard = ({ user }) => {
+  const history = useHistory();
+
   const dayLapse = (date1, date2) => {
     console.log(date1);
     const oneDay = 24 * 60 * 60 * 1000;
@@ -32,8 +34,10 @@ const ProfileCard = ({ user }) => {
           </div>
           <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div className="d-flex justify-content-between">
-              <a href="#" className="btn btn-sm btn-info mr-4">
-                Connect
+              <a href="#" className="btn btn-sm btn-info mr-4" onClick={() => {
+                    history.goBack();
+                }}>
+                Back
               </a>
               <Link to={`/edit/${user.id}`}>
                 <a href="#" className="btn btn-sm btn-default float-right">
@@ -43,15 +47,9 @@ const ProfileCard = ({ user }) => {
             </div>
           </div>
           <div className="card-body pt-0 pt-md-4">
-            <div className="row">
-              <div className="col">
-                <div className="card-profile-stats d-flex justify-content-center mt-md-5" />
-              </div>
-            </div>
-            <div className="text-center">
-              <h3>
+            <div className="text-center mt-md-4">
+              <h3 className="profile-car-name">
                 {user.name}
-                <span className="font-weight-light">, 27</span>
               </h3>
               <div className="h5 font-weight-300">
                 <i className="ni location_pin mr-2" />
@@ -65,7 +63,7 @@ const ProfileCard = ({ user }) => {
                 <i className="ni education_hat mr-2" />
                 Added {dayLapse(new Date(user.created_at), new Date())}{' '}
               </div>
-              <hr className="my-4" />
+              <hr className="my-2" />
               <p>{user.bio}</p>
             </div>
           </div>
