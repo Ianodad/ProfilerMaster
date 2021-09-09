@@ -1,9 +1,9 @@
-import {GET_ALL_USERS, GET_USER, GET_USER_LOCAL } from "../types";
+import { GET_ALL_USERS, GET_USER, GET_USER_LOCAL, PATCH_USER } from '../types';
 
 const initialState = {
   allUsers: [],
   user: {},
-  localUser:{}
+  localUser: {},
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +22,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         localUser: action.payload,
+      };
+    case PATCH_USER:
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;

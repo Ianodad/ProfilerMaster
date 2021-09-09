@@ -1,10 +1,11 @@
+import { useFormikContext } from 'formik';
 import React from 'react';
-import {useFormikContext} from 'formik';
 
 import ErrorMessage from './ErrorMessage';
 
-function FormField({id, ...otherProps}) {
-  const {setFieldTouched, handleChange, errors, touched, values} = useFormikContext();
+function FormField({ id, ...otherProps }) {
+  const { setFieldTouched, handleChange, errors, touched, values } =
+    useFormikContext();
 
   return (
     <>
@@ -15,13 +16,14 @@ function FormField({id, ...otherProps}) {
         {...otherProps}
       /> */}
       <div className="form-group">
-                <input
-                  onChange={handleChange(id)}
-                  value={values[id]}
-                  onBlur={() => setFieldTouched(id)}
-                  {...otherProps}
+        <input
+          onChange={handleChange(id)}
+          value={values[id]}
+          onBlur={() => setFieldTouched(id)}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...otherProps}
         />
-      <ErrorMessage error={errors[id]} visible={touched[id]} />
+        <ErrorMessage error={errors[id]} visible={touched[id]} />
       </div>
     </>
   );

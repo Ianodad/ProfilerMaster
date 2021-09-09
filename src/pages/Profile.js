@@ -1,21 +1,27 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import Lottie from 'lottie-react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import usersAction from '../_redux/Actions/usersActions';
 import MainLayout from '../components/layouts/MainLayout';
 import ProfileCard from '../components/ProfileCard';
-import usersAction from "../_redux/Actions/usersActions";
-import Lottie from "lottie-react";
-
-import LoadingAnimation from "../lottie/loading.json"
+import LoadingAnimation from '../lottie/loading.json';
 
 const { getUser } = usersAction;
 
 class Profile extends Component {
-
-    /* eslint-disable no-alert, no-console */
-    componentDidMount = async () => {
-        await this.props.getUser(this.props.match.params.id);
-    }
-    /*eslint-disable */
+  /* eslint-disable no-alert, no-console */
+  componentDidMount = async () => {
+      // eslint-disable-next-line no-shadow
+      const {getUser}=this.props
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
+    await getUser(id);
+  };
+  /*eslint-disable */
 
     render() {
         const {user}=this.props

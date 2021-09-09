@@ -1,26 +1,21 @@
-import React, { Component} from "react";
-import {Redirect, Route, Switch } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-// Page Component 
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import NotFound from "./pages/NotFound";
-import Edit from "./pages/Edit";
+import Edit from './pages/Edit';
+// Page Component
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Profile from './pages/Profile';
 
-
-
+// eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+  }
 
-
-	// eslint-disable-next-line no-useless-constructor
-	constructor(props) {
-        super(props);
-
-    }
-
-	render() {
-		return (
+  render() {
+    return (
       <>
         <BrowserRouter>
           {/* <Router history={history}> */}
@@ -35,7 +30,7 @@ class App extends Component {
         </BrowserRouter>
       </>
     );
-	}
+  }
 }
 
 export default App;

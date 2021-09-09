@@ -1,17 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import MainLayout from '../components/layouts/MainLayout'
+import MainLayout from '../components/layouts/MainLayout';
 
 function NotFound() {
-    return (
-        <div>
-            <MainLayout>
-                <h1>404</h1>
-                <h1>Page not found</h1>
-            </MainLayout>
-        </div>
-    )
+  return (
+    <div>
+      <MainLayout>
+        <h1>404</h1>
+        <h1>Page not found</h1>
+      </MainLayout>
+    </div>
+  );
 }
 
-export default NotFound
-
+export default NotFound;

@@ -1,17 +1,19 @@
 // eslint-disable-line
-import React, { useEffect } from "react";
-import * as Yup from "yup";
-import { Form, FormField, SubmitButton } from "../components/Forms";
-import { connect } from "react-redux";
+import './Edit.css';
 
-import "./Edit.css";
-import usersAction from "../_redux/Actions/usersActions";
-import MainLayout from "../components/layouts/MainLayout";
-import LoadingAnimation from "../lottie/loading.json";
-import Lottie from "lottie-react";
+import Lottie from 'lottie-react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as Yup from 'yup';
 
-const { getUserFromLocalState  } = usersAction;
+import usersAction from '../_redux/Actions/usersActions';
+import { Form, FormField, SubmitButton } from '../components/Forms';
+import MainLayout from '../components/layouts/MainLayout';
+import LoadingAnimation from '../lottie/loading.json';
 
+const { getUserFromLocalState, patchUserDetail } = usersAction;
+
+// eslint-disable-next-line no-shadow
 function Edit({ getUserFromLocalState, userLocal, match }) {
   useEffect(() => {
     getUserFromLocalState(match.params.id);
@@ -19,16 +21,27 @@ function Edit({ getUserFromLocalState, userLocal, match }) {
   }, []);
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required().label("Name"),
-    occupation: Yup.string().required().label("Occupation"),
-    email: Yup.string().required().label("Email"),
-    bio: Yup.string().required().label("Bio"),
+    name: Yup.string().required().label('Name'),
+    occupation: Yup.string().required().label('Occupation'),
+    email: Yup.string().required().label('Email'),
+    bio: Yup.string().required().label('Bio'),
   });
 
   const handleEdit = ({ name, occupation, email, bio }) => {
-    console.log({ name, occupation, email, bio });
+    console.log({
+      name,
+      occupation,
+      email,
+      bio,
+    });
+    patchUserDetail(match.params.id, {
+      name,
+      occupation,
+      email,
+      bio,
+    });
   };
-  let { name, occupation, email, bio } = userLocal;
+  const { name, occupation, email, bio } = userLocal;
   console.log(name);
   return (
     <MainLayout>
@@ -36,7 +49,12 @@ function Edit({ getUserFromLocalState, userLocal, match }) {
         <div className="edit-form">
           <Form
             // enableReinitialize={true}
-            initialValues={{name, occupation, email, bio} }
+            initialValues={{
+              name,
+              occupation,
+              email,
+              bio,
+            }}
             validationSchema={validationSchema}
             onSubmit={(values) => handleEdit(values)}
           >
@@ -80,11 +98,11 @@ function Edit({ getUserFromLocalState, userLocal, match }) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) =>
   // console.log(state);
-  return {
+  ({
     userLocal: state.Profile.localUser,
-  };
-};
-
-export default connect(mapStateToProps, { getUserFromLocalState })(Edit);
+  });
+export default connect(mapStateToProps, { getUserFromLocalState, patchUserDetail })(
+  Edit
+);

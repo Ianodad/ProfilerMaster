@@ -1,5 +1,6 @@
-import { Formik } from "formik";
-import React from "react";
+/* eslint-disable jsx-a11y/no-redundant-roles */
+import { Formik } from 'formik';
+import React from 'react';
 
 const AppForm = ({
   className,
@@ -10,7 +11,7 @@ const AppForm = ({
   autoComplete,
   enableReinitialize,
 }) => {
-  const Class = className ? className : "form";
+  const Class = className || 'form';
 
   return (
     <Formik

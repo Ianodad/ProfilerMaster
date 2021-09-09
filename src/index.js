@@ -14,13 +14,12 @@ import reducers from './_redux/Reducers';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
 const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
-   </Provider>,
+  </Provider>,
   document.getElementById('root')
 );
 // If you want to start measuring performance in your app, pass a function
