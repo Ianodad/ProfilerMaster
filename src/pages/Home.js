@@ -9,9 +9,10 @@ import { connect } from 'react-redux';
 //   layout,
 // } from "react-stonecutter";
 import usersAction from '../_redux/Actions/usersActions';
-import Card from '../components/Card';
+// import Card from '../components/Card';
 import MainLayout from '../components/layouts/MainLayout';
 import LoadingAnimation from '../lottie/loading.json';
+import CardTwo from '../components/CardTwo';
 
 const { getAllUsers } = usersAction;
 
@@ -24,8 +25,8 @@ class Home extends Component {
     async componentDidMount() {
       // eslint-disable-next-line no-shadow
     const { getAllUsers, users } = this.props;
-    console.log(users);
-    if (users===[]){
+
+    if (users.length === 0) {
       await getAllUsers();
     }
   }
@@ -42,7 +43,8 @@ class Home extends Component {
           {users ? (
             <div className="row flex-wrap">
               {users && users?.map((user) => (
-                <Card key={user.id} user={user} />
+                // <Card key={user.id} user={user} />
+                <CardTwo key={user.id} user={user} />
               ))}
             </div>
           ) : (

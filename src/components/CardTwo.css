@@ -1,0 +1,61 @@
+.card-profile {
+    width: 250px;
+    margin: 10px auto;
+    background-color: #e6e5e1;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, .2);
+    padding: 0;;
+}
+.card-profile .card-img-top {
+    border-radius: 0;
+    backdrop-filter: blur(2px);
+    -webkit-filter: blur(3px);
+    z-index: 0;
+    position: relative;
+
+    
+}
+.card-profile .card-img-profile {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-top: -95px;
+    margin-left: auto;
+    margin-bottom: 35px;
+    border: 5px solid #e6e5e1;
+    width: 14em;
+    z-index: 2;
+    position: relative;
+       
+}
+
+.card-img-profile{
+    transition: 0.3s;
+}
+.card-img-profile:hover {
+    transform: scale(1.1);
+}
+.card-profile .card-title {
+    margin-bottom: 10px;
+    color:purple;
+    text-transform: capitalize;
+}
+.card-occupation{
+    color: pink;
+    text-transform: capitalize;
+}
+.card-profile .card-title small {
+    display: block;
+    font-size: 0.6em;
+    margin-top: 0.2em;
+}
+.card-profile .card-links {
+    margin-bottom: 0.1em;
+}
+.card-profile .card-links .fa {
+    margin: 0 1em;
+    font-size: 1.6em;
+}
+.card-profile .card-links .fa:focus, .card-profile .card-links .fa:hover {
+    text-decoration: none;
+}

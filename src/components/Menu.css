@@ -6,6 +6,7 @@
     color: white;
     font-family: Helvetica;
     font-weight: 300;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
 .navbar-title {
@@ -18,4 +19,9 @@
     padding: 16px 16px;
     cursor: pointer;
     vertical-align: middle;
+    color: white;
+}
+
+.navbar-item:hover {
+    color: grey;
 }
