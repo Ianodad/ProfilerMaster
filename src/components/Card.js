@@ -1,7 +1,7 @@
 import "./Card.css";
-import { Link } from "react-router-dom";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Card({ user }) {
   // const backgroundUrl = `https://picsum.photos/200/300?random=${user.id}`

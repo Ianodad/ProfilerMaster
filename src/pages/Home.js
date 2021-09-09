@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Lottie from "lottie-react";
+
 import MainLayout from "../components/layouts/MainLayout";
+import LoadingAnimation from "../lottie/loading.json"
 // import {
 //   CSSGrid,
 //   measureItems,
@@ -19,16 +22,13 @@ const { getAllUsers } = usersAction;
 class Home extends Component {
   constructor(props) {
     super(props);
-    // Don't call this.setState() here!
-    this.state = {
-      owner: "",
-    };
-  }
 
-  componentDidMount = async () => {
+  }
+  /* eslint-disable-next-line */
+  async componentDidMount(){
     await this.props.getAllUsers();
     console.log(this.props.users);
-  };
+  }
 
   randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -38,11 +38,15 @@ class Home extends Component {
     return (
       <>
         <MainLayout>
+          {users ? (
           <div className="row flex-wrap">
             {users.map((user) => (
               <Card key={user.id} user={user} />
             ))}
           </div>
+          ):(
+            <Lottie animationData={LoadingAnimation} />
+          )}
         </MainLayout>
       </>
     );

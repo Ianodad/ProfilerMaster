@@ -1,8 +1,9 @@
-import {GET_ALL_USERS, GET_USER } from "../types";
+import {GET_ALL_USERS, GET_USER, GET_USER_LOCAL } from "../types";
 
 const initialState = {
   allUsers: [],
-  user: {}
+  user: {},
+  localUser:{}
 };
 
 export default (state = initialState, action) => {
@@ -16,6 +17,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    case GET_USER_LOCAL:
+      return {
+        ...state,
+        localUser: action.payload,
       };
     default:
       return state;

@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-
+import Edit from "./pages/Edit";
 
 
 
@@ -27,6 +27,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/profile/:id" exact component={Profile} />
+            <Route path="/edit/:id" exact component={Edit} />
             <Route path="/notFound" component={NotFound} />
             <Redirect to="/notFound" />
           </Switch>

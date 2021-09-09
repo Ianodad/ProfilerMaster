@@ -21,6 +21,7 @@ module.exports = {
     ],
     "rules": {
         "simple-import-sort/imports": 0,
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "no-constant-condition":0
     }
 };
