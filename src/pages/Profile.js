@@ -23,6 +23,9 @@ class Profile extends Component {
   };
   /*eslint-disable */
 
+  componentWillUnmount() {
+    
+  }
     render() {
         const {user, navigation}=this.props
         return (

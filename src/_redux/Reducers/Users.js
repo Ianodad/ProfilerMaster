@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_USER, GET_USER_LOCAL, PATCH_USER } from '../types';
+import { CLEAR_USER_STATE,GET_ALL_USERS, GET_USER, GET_USER_LOCAL, PATCH_USER } from '../types';
 
 const initialState = {
   allUsers: [],
@@ -22,6 +22,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         localUser: action.payload,
+      };
+    case CLEAR_USER_STATE:
+      return {
+        ...state,
+        user: action.payload,
       };
     case PATCH_USER:
       return {

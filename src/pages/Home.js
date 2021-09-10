@@ -40,7 +40,7 @@ class Home extends Component {
 
   render() {
     const { users, size } = this.props;
-    console.log(size.width)
+    // console.log(size.width)
     return (
       <>
         <MainLayout>

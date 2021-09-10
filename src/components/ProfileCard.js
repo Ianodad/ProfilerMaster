@@ -9,7 +9,7 @@ const ProfileCard = ({ user }) => {
   const history = useHistory();
 
   const dayLapse = (date1, date2) => {
-    console.log(date1);
+    // console.log(date1);
     const oneDay = 24 * 60 * 60 * 1000;
     const date1InMillis = date1.getTime();
     const date2InMillis = date2.getTime();

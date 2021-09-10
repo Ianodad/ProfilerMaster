@@ -24,7 +24,7 @@ const { getUserFromLocalState, patchUserDetail } = usersAction;
 function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, history  }) {
   useEffect(() => {
     getUserFromLocalState(match.params.id);
-    console.log(match.params.id);
+    // console.log(match.params.id);
   }, []);
 
   const validationSchema = Yup.object().shape({
@@ -43,7 +43,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
     }, history);
   };
   const { name, occupation, email, bio } = userLocal;
-  console.log(history);
+  // console.log(history);
   return (
     <MainLayout>
       {name ? (

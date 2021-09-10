@@ -35,6 +35,13 @@ const getUserFromLocalState = (id) => async (dispatch, getState) => {
   }
 };
 
+// const clearUserState = () => async (dispatch) => {
+  
+//   dispatch({
+//     type: CLEAR_USER_STATE,
+//     payload: {},
+//   });
+// }
 const patchUserDetail = (id, userObj, history) => async (dispatch) => {
   const { data } = await usersApi.patchUserDetail(id, userObj);
   try {
@@ -44,7 +51,7 @@ const patchUserDetail = (id, userObj, history) => async (dispatch) => {
     });
     history.push({pathname:'/', state: {added:'user'}});
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 };
 export default {
