@@ -15,6 +15,7 @@ import { Form, FormField, SubmitButton } from '../components/Forms';
 import MainLayout from '../components/layouts/MainLayout';
 import LoadingAnimation from '../lottie/loading.json';
 
+const _ = require('lodash');
 
 const { getUserFromLocalState, patchUserDetail } = usersAction;
 
@@ -46,7 +47,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
   // console.log(history);
   return (
     <MainLayout>
-      {name ? (
+      {!_.isEmpty(userLocal) ? (
         <div className="edit-form">
           <Form
             // enableReinitialize={true}
@@ -109,7 +110,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
 const mapStateToProps = (state) =>
   // console.log(state);
   ({
-    userLocal: state.Profile.localUser,
+    userLocal: state.Profile.user,
   });
 export default connect(mapStateToProps, { getUserFromLocalState, patchUserDetail })(
   Edit

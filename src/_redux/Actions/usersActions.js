@@ -1,5 +1,5 @@
 import usersApi from '../../api/usersApi';
-import { GET_ALL_USERS, GET_USER, GET_USER_LOCAL, PATCH_USER } from '../types';
+import { CLEAR_USER_STATE,GET_ALL_USERS, GET_USER, PATCH_USER } from '../types';
 
 const getAllUsers = () => async (dispatch) => {
   const { data } = await usersApi.getAllUsers();
@@ -20,28 +20,27 @@ const getUser = (id) => async (dispatch) => {
 
 const getUserFromLocalState = (id) => async (dispatch, getState) => {
   const userObj = getState().Profile.user;
-
-  if (userObj) {
+  if (userObj==={}) {
     dispatch({
-      type: GET_USER_LOCAL,
+      type: GET_USER,
       payload: userObj,
     });
   } else {
     const { data } = await usersApi.getUser(id);
     dispatch({
-      type: GET_USER_LOCAL,
+      type: GET_USER,
       payload: data,
     });
   }
 };
 
-// const clearUserState = () => async (dispatch) => {
+const clearUserState = () => async (dispatch) => {
   
-//   dispatch({
-//     type: CLEAR_USER_STATE,
-//     payload: {},
-//   });
-// }
+  dispatch({
+    type: CLEAR_USER_STATE,
+    payload: {},
+  });
+}
 const patchUserDetail = (id, userObj, history) => async (dispatch) => {
   const { data } = await usersApi.patchUserDetail(id, userObj);
   try {
@@ -59,4 +58,5 @@ export default {
   getUser,
   getUserFromLocalState,
   patchUserDetail,
+  clearUserState
 };

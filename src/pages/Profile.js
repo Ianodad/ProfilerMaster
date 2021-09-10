@@ -7,13 +7,17 @@ import MainLayout from '../components/layouts/MainLayout';
 import ProfileCard from '../components/ProfileCard';
 import LoadingAnimation from '../lottie/loading.json';
 
-const { getUser } = usersAction;
+const _ = require('lodash');
+
+
+const { getUser, clearUserState } = usersAction;
 
 class Profile extends Component {
   /* eslint-disable no-alert, no-console */
   componentDidMount = async () => {
       // eslint-disable-next-line no-shadow
-      const {getUser}=this.props
+      const { getUser}=this.props
+    //  await clearUserState()
     const {
       match: {
         params: { id },
@@ -24,14 +28,17 @@ class Profile extends Component {
   /*eslint-disable */
 
   componentWillUnmount() {
-    
+    const {clearUserState}=this.props
+
+    clearUserState()
   }
     render() {
         const {user, navigation}=this.props
+        console.log(user)
         return (
             <>
             <MainLayout>
-                { user ? (<ProfileCard user={user} navigation={navigation}/>):(<Lottie animationData={LoadingAnimation} />)}
+                { !_.isEmpty(user) ? (<ProfileCard user={user} navigation={navigation}/>):(<Lottie animationData={LoadingAnimation} />)}
                 
             </MainLayout>
             </>
@@ -47,4 +54,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {getUser})(Profile)
+export default connect(mapStateToProps, {getUser, clearUserState})(Profile)
