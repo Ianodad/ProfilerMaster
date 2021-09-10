@@ -16,7 +16,7 @@ import CardTwo from '../components/CardTwo';
 import MainLayout from '../components/layouts/MainLayout';
 import LoadingAnimation from '../lottie/loading.json';
 
-const { getAllUsers } = usersAction;
+const { getAllUsers, clearUserState } = usersAction;
 
 // const Grid = makeResponsive(measureItems(CSSGrid), {
 //   maxWidth: 1920,
@@ -33,6 +33,13 @@ class Home extends Component {
       await getAllUsers();
     
   }
+  
+  componentWillUnmount() {
+    // eslint-disable-next-line no-shadow
+    const {clearUserState}=this.props
+
+    clearUserState()
+  }
 
   randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -44,6 +51,7 @@ class Home extends Component {
     return (
       <>
         <MainLayout>
+          <div className="main-content mt-4 pt-4">
           {users.length > 0 ? (
             <StackGrid
               columnWidth={size.width <= 1000 ? '80%' : '18.33%'}
@@ -66,6 +74,8 @@ class Home extends Component {
           ) : (
             <Lottie animationData={LoadingAnimation} />
           )}
+
+          </div>
         </MainLayout>
       </>
     );
@@ -78,4 +88,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getAllUsers })(SizeMe()(Home));
+export default connect(mapStateToProps, { getAllUsers,clearUserState })(SizeMe()(Home));

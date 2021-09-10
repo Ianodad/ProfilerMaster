@@ -34,13 +34,13 @@ const ProfileCard = ({ user }) => {
           </div>
           <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div className="d-flex justify-content-between">
-              <a href="#" className="btn btn-sm btn-info mr-4" onClick={() => {
+              <a href="#" className="btn  btn-info mr-4" onClick={() => {
                     history.goBack();
                 }}>
                 Back
               </a>
               <Link to={`/edit/${user.id}`}>
-                <a href="#" className="btn btn-sm btn-default float-right">
+                <a href="#" className="btn btn-default float-right">
                   Edit
                 </a>
               </Link>
@@ -48,10 +48,10 @@ const ProfileCard = ({ user }) => {
           </div>
           <div className="card-body pt-0 pt-md-4">
             <div className="text-center mt-md-4">
-              <h3 className="profile-car-name">
+              <h3 className="profile-car-name text-capitalize">
                 {user.name}
               </h3>
-              <div className="h5 font-weight-300">
+              <div className="h5 font-weight-300 ">
                 <i className="ni location_pin mr-2" />
                 {user.email}
               </div>
@@ -61,7 +61,7 @@ const ProfileCard = ({ user }) => {
               </div>
               <div>
                 <i className="ni education_hat mr-2" />
-                Added {dayLapse(new Date(user.created_at), new Date())}{' '}
+                Added {dayLapse(new Date(user.created_at), new Date())} days ago
               </div>
               <hr className="my-2" />
               <p>{user.bio}</p>

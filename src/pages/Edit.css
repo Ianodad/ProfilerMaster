@@ -15,7 +15,6 @@
 .form-control, .btn {
     min-height: 38px;
     border-radius: 4px;
-    margin:4px 3px;
 }
 .btn {        
     font-size: 15px;
@@ -24,8 +23,8 @@
 
 .sub-btn{
     border-radius:5px;
-    height:53px;
-    width:125px;
+    /* height:53px;
+    width:125px; */
     background-color: #172B4D;
     
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 

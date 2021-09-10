@@ -61,7 +61,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
             onSubmit={(values) => handleEdit(values)}
           >
             <div className="edit-card-header">
-            <a href="#" className="btn btn-sm btn-info mr-4" onClick={()=>history.goBack()}>
+            <a href="#" className="btn btn-info mr-4" onClick={()=>history.goBack()}>
                 Back
               </a>
               <h2 className="text-center">Edit Profile</h2>
@@ -96,7 +96,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
               id="bio"
             />
             <div className="submit-button text-center mt-4">
-            <SubmitButton title="Edit" className="sub-btn btn btn-sm" style={{ color: "#fff"}}/>
+            <SubmitButton title="Edit" className="sub-btn btn " style={{ color: "#fff"}}/>
             </div>
           </Form>
         </div>
