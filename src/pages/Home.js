@@ -8,7 +8,7 @@ import SizeMe from 'react-sizeme';
 //   makeResponsive,
 //   layout,
 // } from "react-stonecutter";
-import StackGrid, { transitions } from 'react-stack-grid';
+import StackGrid, { easings,transitions } from 'react-stack-grid';
 
 import usersAction from '../_redux/Actions/usersActions';
 import CardTwo from '../components/CardTwo';
@@ -22,7 +22,7 @@ const { getAllUsers, clearUserState } = usersAction;
 //   maxWidth: 1920,
 //   minPadding: 100,
 // });
-const { fadeUp } = transitions;
+const { fadeDown,  } = transitions;
 
 class Home extends Component {
   /* eslint-disable-next-line */
@@ -51,25 +51,32 @@ class Home extends Component {
     return (
       <>
         <MainLayout>
+          
           <div className="main-content mt-4 pt-4">
           {users.length > 0 ? (
             <StackGrid
               columnWidth={size.width <= 1000 ? '80%' : '18.33%'}
-              appear={fadeUp.appear}
-              appeared={fadeUp.appeared}
-              enter={fadeUp.enter}
-              entered={fadeUp.entered}
-              leaved={fadeUp.leaved}
+              appear={fadeDown.appear}
+              appeared={fadeDown.appeared}
+              enter={fadeDown.enter}
+              entered={fadeDown.entered}
+              leaved={fadeDown.leaved}
               appearDelay={30}
-              gutterWidth={3}
+              duration={2000}
+              easing={easings.cubicIn}
+              gutterWidth={5}
+              gutterHeight={5}
             >
               {users &&
-                users?.map((user) => (
+                users?.map((user) => {
+                  const height = this.randomNumber(400, 450)      
+                  return(
+                  
                   //  <Card key={user.id} user={user} />
-                  <div key={user.id}>
-                    <CardTwo key={user.id} user={user} />
+                  <div key={user.id} style={{ height: `${height}px`, whiteSpace: 'normal',  }}>
+                    <CardTwo key={user.id} user={user} height={height} />
                   </div>
-                ))}
+                )})}
             </StackGrid>
           ) : (
             <Lottie animationData={LoadingAnimation} />
