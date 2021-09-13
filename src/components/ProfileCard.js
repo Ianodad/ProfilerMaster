@@ -3,7 +3,9 @@
 import './ProfileCard.css';
 
 import React from 'react';
+import { fadeIn } from 'react-animations'
 import { Link, useHistory} from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
 
 const ProfileCard = ({ user }) => {
   const history = useHistory();
@@ -19,8 +21,15 @@ const ProfileCard = ({ user }) => {
 
   const avatarUrl = `https://i.pravatar.cc/300?u=${user.id}`;
 
+  // Animations for the profile card
+  const fadeInAnimation = keyframes`${fadeIn}`;
+
+
+  const FadeInDiv = styled.div`
+  animation: 1.2s ${fadeInAnimation};
+`;
   return (
-    <div className="row profile-card">
+    <FadeInDiv className="row profile-card">
       <div className="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
         <div className="card card-profile shadow">
           <div className="row justify-content-center">
@@ -69,7 +78,7 @@ const ProfileCard = ({ user }) => {
           </div>
         </div>
       </div>
-    </div>
+    </FadeInDiv>
   );
 };
 

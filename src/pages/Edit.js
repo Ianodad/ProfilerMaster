@@ -5,8 +5,10 @@ import './Edit.css';
 
 import Lottie from 'lottie-react';
 import React, { useEffect } from 'react';
+import { fadeIn } from 'react-animations'
 // import fadeIn from 'react-animations/lib/fade-in'
 import { connect } from 'react-redux';
+import styled, { keyframes } from 'styled-components';
 // import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -45,10 +47,18 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
   };
   const { name, occupation, email, bio } = userLocal;
   // console.log(history);
+
+    // Animations for the profile card
+    const fadeInAnimation = keyframes`${fadeIn}`;
+
+
+    const FadeInDiv = styled.div`
+    animation: 1.2s ${fadeInAnimation};
+  `;
   return (
     <MainLayout>
       {!_.isEmpty(userLocal) ? (
-        <div className="edit-form">
+        <FadeInDiv className="edit-form">
           <Form
             // enableReinitialize={true}
             initialValues={{
@@ -99,7 +109,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
             <SubmitButton title="Edit" className="sub-btn btn " style={{ color: "#fff"}}/>
             </div>
           </Form>
-        </div>
+        </FadeInDiv>
       ) : (
         <Lottie animationData={LoadingAnimation} />
       )}

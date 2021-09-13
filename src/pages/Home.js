@@ -11,7 +11,7 @@ import SizeMe from 'react-sizeme';
 import StackGrid, { easings,transitions } from 'react-stack-grid';
 
 import usersAction from '../_redux/Actions/usersActions';
-import CardTwo from '../components/CardTwo';
+import CardTwo from '../components/Card';
 // import Card from '../components/Card';
 import MainLayout from '../components/layouts/MainLayout';
 import LoadingAnimation from '../lottie/loading.json';
@@ -69,7 +69,7 @@ class Home extends Component {
             >
               {users &&
                 users?.map((user) => {
-                  const height = this.randomNumber(400, 450)      
+                  const height = this.randomNumber(400, 400)      
                   return(
                   
                   //  <Card key={user.id} user={user} />

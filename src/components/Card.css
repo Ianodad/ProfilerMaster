@@ -1,58 +1,61 @@
-@import "https://fonts.googleapis.com/css?family=Muli";
+.card-profile-card {
+    width: 250px;
+    margin: 10px auto;
+    background-color: #e6e5e1;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 1em 1em 2em rgba(0, 0, 0, .2);
+    padding: 0px;
+}
+.card-profile-card .card-img-top {
+    border-radius: 0;
+    backdrop-filter: blur(2px);
+    -webkit-filter: blur(3px);
+    z-index: 0;
+    position: relative;
 
-*{
-    font-family: "Muli",sans-serif;
-  }
-  .card.profile-card {
-      box-shadow: 0px 0px 20px #DFDFDF;
-      border: none;
-      border-radius: 0;
-  }
-  
-  input.fab {
-      display: none
-  }
-  
-  figure {
-    overflow: hidden
-  }
-  
-  .img-profile {
-      -webkit-clip-path: circle(52% at 70% 38%);
-      -moz-clip-path: circle(52% at 70% 38%);
-      clip-path: circle(52% at 70% 38%);
-      transform: translatez(0);
-      transition: all .3s linear;
-  }
-  .img-profile:hover {
-      -webkit-clip-path: circle(30% at 50% 50%);
-      clip-path: circle(30% at 50% 50%);
-    transform: scale(1.07) rotate(-5deg) translatez(0)
-  }
-  .profile-card .fab+.toggle {
-      top: 63%;
-      z-index: 10;
-      right: 0;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      font-size: 60px;
-      line-height: 50px;
-      text-align: center;
-      border-radius: 50%;
-      position: absolute;
-      color: #fff;
-      background: #F44336;
-      -webkit-user-select: none;
-      box-shadow: 0 4px 4px #666;
-      transition: all 0.3s ease-in-out 0s;
-  }
-  
-  .fab:checked+.toggle {
-      color: #fff;
-      background: #F44336;
-      transform: rotate(135deg);
-      box-shadow: 2px -2px 4px #333;
-      transition: all 0.3s ease-in-out 0s;
-  }
-  
+    
+}
+.card-profile-card .card-img-profile {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-top: -95px;
+    margin-left: auto;
+    margin-bottom: 35px;
+    border: 5px solid #e6e5e1;
+    width: 14em;
+    z-index: 2;
+    position: relative;
+       
+}
+
+.card-img-profile{
+    transition: 0.3s;
+}
+.card-img-profile:hover {
+    transform: scale(1.1);
+}
+.card-profile-card .card-title {
+    margin-bottom: 10px;
+    color:purple;
+    text-transform: capitalize;
+}
+.card-occupation{
+    color: pink;
+    text-transform: capitalize;
+}
+.card-profile-card .card-title small {
+    display: block;
+    font-size: 0.6em;
+    margin-top: 0.2em;
+}
+.card-profile-card .card-links {
+    margin-bottom: 0.1em;
+}
+.card-profile-card .card-links .fa {
+    margin: 0 1em;
+    font-size: 1.6em;
+}
+.card-profile-card .card-links .fa:focus, .card-profile-card .card-links .fa:hover {
+    text-decoration: none;
+}
