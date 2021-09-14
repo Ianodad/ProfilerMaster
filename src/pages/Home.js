@@ -1,4 +1,4 @@
-import Lottie from 'lottie-react';
+// import Lottie from 'lottie-react';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SizeMe from 'react-sizeme';
@@ -14,7 +14,10 @@ import usersAction from '../_redux/Actions/usersActions';
 import CardTwo from '../components/Card';
 // import Card from '../components/Card';
 import MainLayout from '../components/layouts/MainLayout';
-import LoadingAnimation from '../lottie/loading.json';
+import Loader from '../components/Loaders/Home'
+import SearchBar from '../components/SearchBar';
+import SelectOrder from '../components/SelectOrder';
+// import LoadingAnimation from '../lottie/loading.json';
 
 const { getAllUsers, clearUserState } = usersAction;
 
@@ -25,6 +28,14 @@ const { getAllUsers, clearUserState } = usersAction;
 const { fadeDown,  } = transitions;
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: '',
+    };
+  }
+
   /* eslint-disable-next-line */
   async componentDidMount() {
     // eslint-disable-next-line no-shadow
@@ -45,30 +56,78 @@ class Home extends Component {
     return Math.floor(Math.random() * (max - min) + min);
   };
 
+  onHandleChange = (query) => {
+    // console.log(query);
+    this.setState({ searchTerm: query });
+  } 
+
+  // eslint-disable-next-line consistent-return
+  getColumWidth = (width) => {
+    if (width <= 600) {
+      return '100%';
+    } if (width > 600 && width <= 800) {
+      return '60%';
+    } if (width > 800 && width <= 1000) {
+      return '40%';
+    } if (width > 1000 && width <= 1200) {
+      return '30%';
+    } if (width > 1200 && width <= 1600) {
+      return '23%';
+    } if (width > 1600 && width <= 1920) {
+      return '23%';
+    }
+
+  }
+
+  selectOnChange=({value})=>{
+    console.log(value)
+  }
+
+  getPageData = () => {
+    
+    const {searchTerm}=this.state
+    const {users:allUsers}=this.props
+    const  results= !searchTerm ? allUsers : allUsers.filter((user) => {
+      return user.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
+    return results;
+  }
+
   render() {
     const { users, size } = this.props;
     // console.log(size.width)
+    const results=this.getPageData()
+    console.log(results)
     return (
       <>
         <MainLayout>
-          
+          <div className="search-bar row container mt-4 pt-2 w-100">
+            <div className="searchbar col-7 container">
+            <SearchBar onHandleChange={this.onHandleChange} onHandleSearch={this.onHandleSearch}/>
+            </div>
+            <div className="SelectOrder col-4 float-right">
+              <SelectOrder selectOnChange={this.selectOnChange} className=""/>
+            </div>
+          </div>
           <div className="main-content mt-4 pt-4">
-          {users.length > 0 ? (
+          {results.length > 0 ? (
             <StackGrid
-              columnWidth={size.width <= 1000 ? '80%' : '18.33%'}
+              // eslint-disable-next-line no-nested-ternary
+              columnWidth={this.getColumWidth(size.width)}
               appear={fadeDown.appear}
               appeared={fadeDown.appeared}
               enter={fadeDown.enter}
               entered={fadeDown.entered}
               leaved={fadeDown.leaved}
-              appearDelay={30}
+              appearDelay={1}
               duration={2000}
               easing={easings.cubicIn}
               gutterWidth={5}
               gutterHeight={5}
             >
               {users &&
-                users?.map((user) => {
+                results?.map((user) => {
                   const height = this.randomNumber(400, 400)      
                   return(
                   
@@ -79,7 +138,12 @@ class Home extends Component {
                 )})}
             </StackGrid>
           ) : (
-            <Lottie animationData={LoadingAnimation} />
+            <div className="text-center">
+            {[...Array(10)].map((_, i) => (
+              <Loader className="" keys={i} n={users.length} />
+            ))}
+             {/* <Lottie animationData={LoadingAnimation} />  */}
+            </div>
           )}
 
           </div>

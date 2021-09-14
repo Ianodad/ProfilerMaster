@@ -1,11 +1,12 @@
-import Lottie from 'lottie-react';
+// import Lottie from 'lottie-react';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import usersAction from '../_redux/Actions/usersActions';
 import MainLayout from '../components/layouts/MainLayout';
+// import LoadingAnimation from '../lottie/loading.json';
+import ProfileLoader from '../components/Loaders/Profile'
 import ProfileCard from '../components/ProfileCard';
-import LoadingAnimation from '../lottie/loading.json';
 
 const _ = require('lodash');
 
@@ -38,7 +39,7 @@ class Profile extends Component {
         return (
             <>
             <MainLayout>
-                { !_.isEmpty(user) ? (<ProfileCard user={user} navigation={navigation}/>):(<Lottie animationData={LoadingAnimation} />)}
+                {! _.isEmpty(user) ? (<ProfileCard user={user} navigation={navigation}/>): (<div className="text-center"><ProfileLoader/></div>)}
                 
             </MainLayout>
             </>

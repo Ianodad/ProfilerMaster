@@ -3,7 +3,7 @@
 // eslint-disable-line
 import './Edit.css';
 
-import Lottie from 'lottie-react';
+// import Lottie from 'lottie-react';
 import React, { useEffect } from 'react';
 import { fadeIn } from 'react-animations'
 // import fadeIn from 'react-animations/lib/fade-in'
@@ -15,7 +15,8 @@ import * as Yup from 'yup';
 import usersAction from '../_redux/Actions/usersActions';
 import { Form, FormField, SubmitButton } from '../components/Forms';
 import MainLayout from '../components/layouts/MainLayout';
-import LoadingAnimation from '../lottie/loading.json';
+// import LoadingAnimation from '../lottie/loading.json';
+import EditLoader from '../components/Loaders/Edit';
 
 const _ = require('lodash');
 
@@ -111,7 +112,11 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
           </Form>
         </FadeInDiv>
       ) : (
-        <Lottie animationData={LoadingAnimation} />
+        <div className="text-center">
+          <EditLoader />
+        </div>
+        
+        // <Lottie animationData={LoadingAnimation} />
       )}
     </MainLayout>
   );
