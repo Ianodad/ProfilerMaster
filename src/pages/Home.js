@@ -83,7 +83,6 @@ class Home extends Component {
   }
 
   selectOnChange=({value})=>{
-    console.log(value)
     if (value === 'asc'){
       this.setState({order: 'asc'})
       this.setState({orderType: 'name'})
@@ -105,7 +104,6 @@ class Home extends Component {
     });
 
     const results = !order ? searchResults : _.orderBy(searchResults, orderType, order)
-    console.log(results)
 
     return results;
   }

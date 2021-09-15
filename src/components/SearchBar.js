@@ -1,6 +1,7 @@
+import './SearchBar.css'
+
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
-import './SearchBar.css'
 
 function SearchBar({ onHandleChange, onHandleSearch }) {
   const [searchTerm, setSearchTerm] = React.useState('');
