@@ -70,7 +70,7 @@ const ProfileCard = ({ user }) => {
               </div>
               <div>
                 <i className="ni education_hat mr-2" />
-                Added {dayLapse(new Date(user.created_at), new Date())} days ago
+                Updated {dayLapse(new Date(user.created_at), new Date())} days ago
               </div>
               <hr className="my-2" />
               <p>{user.bio}</p>
