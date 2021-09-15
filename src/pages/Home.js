@@ -18,6 +18,7 @@ import Loader from '../components/Loaders/Home'
 import SearchBar from '../components/SearchBar';
 import SelectOrder from '../components/SelectOrder';
 // import LoadingAnimation from '../lottie/loading.json';
+const _ = require("lodash");
 
 const { getAllUsers, clearUserState } = usersAction;
 
@@ -33,6 +34,8 @@ class Home extends Component {
     super(props);
     this.state = {
       searchTerm: '',
+      order: '',
+      orderType: '',
     };
   }
 
@@ -81,15 +84,28 @@ class Home extends Component {
 
   selectOnChange=({value})=>{
     console.log(value)
+    if (value === 'asc'){
+      this.setState({order: 'asc'})
+      this.setState({orderType: 'name'})
+    } else if (value === 'desc'){
+      this.setState({order: 'desc'})
+      this.setState({orderType: 'name'})
+    } else if (value === 'date'){
+      this.setState({orderType: 'updated_at'})
+      this.setState({order: 'desc'})
+    }
   }
 
   getPageData = () => {
     
-    const {searchTerm}=this.state
+    const {searchTerm, order, orderType}=this.state
     const {users:allUsers}=this.props
-    const  results= !searchTerm ? allUsers : allUsers.filter((user) => {
+    const  searchResults= !searchTerm ? allUsers : allUsers.filter((user) => {
       return user.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
+
+    const results = !order ? searchResults : _.orderBy(searchResults, orderType, order)
+    console.log(results)
 
     return results;
   }
@@ -98,7 +114,7 @@ class Home extends Component {
     const { users, size } = this.props;
     // console.log(size.width)
     const results=this.getPageData()
-    console.log(results)
+    // console.log(results)
     return (
       <>
         <MainLayout>
@@ -139,7 +155,8 @@ class Home extends Component {
             </StackGrid>
           ) : (
             <div className="text-center">
-            {[...Array(10)].map((_, i) => (
+            {/* eslint-disable-next-line no-shadow */}
+            {[...Array(10)].map((i) => (
               <Loader className="" keys={i} n={users.length} />
             ))}
              {/* <Lottie animationData={LoadingAnimation} />  */}

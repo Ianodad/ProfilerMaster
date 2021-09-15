@@ -5,7 +5,8 @@ import Select from 'react-select'
 
 const options = [
     { value: 'asc', label: 'Ascending' },
-    { value: 'desc', label: 'Descending' }
+    { value: 'desc', label: 'Descending' },
+    { value: 'date', label:'Updated'}
   ]
 
 function SelectOrder({selectOnChange, ...otherProps}) {
