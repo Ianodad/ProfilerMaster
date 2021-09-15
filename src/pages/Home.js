@@ -11,7 +11,7 @@ import SizeMe from 'react-sizeme';
 import StackGrid, { easings,transitions } from 'react-stack-grid';
 
 import usersAction from '../_redux/Actions/usersActions';
-import CardTwo from '../components/Card';
+import Card from '../components/Card';
 // import Card from '../components/Card';
 import MainLayout from '../components/layouts/MainLayout';
 import Loader from '../components/Loaders/Home'
@@ -147,7 +147,7 @@ class Home extends Component {
                   
                   //  <Card key={user.id} user={user} />
                   <div key={user.id} style={{ height: `${height}px`, whiteSpace: 'normal',  }}>
-                    <CardTwo key={user.id} user={user} height={height} />
+                    <Card key={user.id} user={user} height={height} />
                   </div>
                 )})}
             </StackGrid>

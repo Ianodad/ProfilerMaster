@@ -1,9 +1,10 @@
-import { useFormikContext } from 'formik';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { Field,useFormikContext } from 'formik';
 import React from 'react';
 
 import ErrorMessage from './ErrorMessage';
 
-function FormField({ id, ...otherProps }) {
+function FormField({ id, label, textarea=false,  ...otherProps }) {
   const { setFieldTouched, handleChange, errors, touched, values } =
     useFormikContext();
 
@@ -15,11 +16,14 @@ function FormField({ id, ...otherProps }) {
         onChangeText={handleChange(id)}
         {...otherProps}
       /> */}
+      {label && <label htmlFor={label}>{label}</label>}
       <div className="form-group">
-        <input
+        <Field
           onChange={handleChange(id)}
           value={values[id]}
           onBlur={() => setFieldTouched(id)}
+          as={textarea ? 'textarea' : 'input'}
+          // as={textarea}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...otherProps}
         />

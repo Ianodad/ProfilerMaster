@@ -29,9 +29,9 @@ const ProfileCard = ({ user }) => {
   animation: 1.2s ${fadeInAnimation};
 `;
   return (
-    <FadeInDiv className="row profile-card">
+    <FadeInDiv className="row profile-card" >
       <div className="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
-        <div className="card card-profile shadow">
+        <div className="card card-profile shadow" style={{ borderRadius:"20px" }}>
           <div className="row justify-content-center">
             <div className="col-lg-3 order-lg-2">
               <div className="card-profile-image">
@@ -41,7 +41,7 @@ const ProfileCard = ({ user }) => {
               </div>
             </div>
           </div>
-          <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+          <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4" style={{ borderRadius:"20px" }}>
             <div className="d-flex justify-content-between">
               <a href="#" className="btn  btn-info mr-4" onClick={() => {
                     history.goBack();
@@ -55,7 +55,7 @@ const ProfileCard = ({ user }) => {
               </Link>
             </div>
           </div>
-          <div className="card-body pt-0 pt-md-4">
+          <div className="card-body pt-0 pt-md-4" >
             <div className="text-center mt-md-4">
               <h3 className="profile-car-name text-capitalize">
                 {user.name}

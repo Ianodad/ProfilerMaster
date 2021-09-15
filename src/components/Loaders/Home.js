@@ -8,13 +8,13 @@ const MyLoader = (props) =>(
     <ContentLoader
       speed={4}
       width={360}
-      height={300}
-      viewBox="0 0 360 300"
+      height={500}
+      viewBox="0 0 360 500"
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
       {...props}
     >
-      <rect x="31" y="32" rx="0" ry="0" width="262" height="251" />
+      <rect x="31" y="32" rx="20" ry="20" width="262" height="400" />
     </ContentLoader>
     
   );

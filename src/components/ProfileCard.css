@@ -253,6 +253,7 @@
   }
   .profile-card{
     margin-top: 5rem;
+    border-radius: 20px;
   }
   @media screen and (prefers-reduced-motion: reduce) {
     .btn {

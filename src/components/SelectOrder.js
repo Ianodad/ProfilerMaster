@@ -11,8 +11,8 @@ const options = [
 
 function SelectOrder({selectOnChange, ...otherProps}) {
     return (
-        <div className="float-right" style={{ width:'140px' , zIndex:'4', position:"relative" }}>
-              <Select options={options} onChange={selectOnChange} {...otherProps} />
+        <div className="float-right" style={{ width:'140px' , zIndex:'4', position:"relative",  }}>
+              <Select options={options} menuColor='green'onChange={selectOnChange} {...otherProps} />
         </div>
     )
 }

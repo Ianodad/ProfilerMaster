@@ -79,6 +79,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
             </div>
 
             <FormField
+              label="Name"
               type="text"
               className="form-control"
               placeholder="name"
@@ -86,6 +87,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
               id="name"
             />
             <FormField
+              label="Email"
               type="email"
               className="form-control"
               placeholder="Email"
@@ -93,6 +95,7 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
               id="email"
             />
             <FormField
+              label="Occupation"
               type="text"
               className="form-control"
               placeholder="Occupation"
@@ -100,14 +103,16 @@ function Edit({ getUserFromLocalState, patchUserDetail, userLocal, match, histor
               id="occupation"
             />
             <FormField
-              type="text"
-              className="form-control"
+              label="Bio"
+              type="textarea"
+              className="form-control text-area-bio"
               placeholder="Bio"
               required="required"
               id="bio"
+              textarea
             />
             <div className="submit-button text-center mt-4">
-            <SubmitButton title="Edit" className="sub-btn btn " style={{ color: "#fff"}}/>
+            <SubmitButton title="SUBMIT" className="sub-btn btn " style={{ color: "#fff"}}/>
             </div>
           </Form>
         </FadeInDiv>

@@ -9,8 +9,8 @@ function CardTwo({user, height}) {
   const avatarUrl = `https://i.pravatar.cc/300?u=${user.id}`;
   // console.log(width)
   return (
-    <Link className="card card-profile-card text-center" to={`/profile/${user.id}`} style={{ height:`${height-10}px`}} >
-      <img className="card-img-top" src={backgroundUrl} />
+    <Link className="card card-profile-card text-center" to={`/profile/${user.id}`} style={{ height:`${height-10}px`, borderRadius:'20px'}} >
+      <img className="card-img-top" src={backgroundUrl} style={{ borderRadius:'20px' }}/>
       <div className="card-block">
           <div className="image-wrapper">
             <img className="card-img-profile" src={avatarUrl} />
